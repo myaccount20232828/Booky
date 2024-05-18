@@ -8,7 +8,7 @@ jobs:
     steps:
      - name: Build App
        run: |
-            cd ..
+            cd ../../
             ls
             pwd
             whoami
