@@ -15,13 +15,13 @@ enum NavigationType: String, AppEnum, CaseDisplayRepresentable {
     // This will be displayed as the title of the menu shown when picking from the options
     static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Navigation")
     
-    static var caseDisplayRepresentations: [Self:DisplayRepresentation] = [
+    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .library: DisplayRepresentation(title: "Library",
-                                        subtitle: "Return to the home page",
-                                        image: .init(systemName: "books.vertical")),
+                                         subtitle: "Return to the home page",
+                                         image: Image(systemName: "books.vertical")),
         .book: DisplayRepresentation(title: "Book",
-                                     subtitle: "Navigate to a specific book",
-                                     image: .init(systemName: "book"))
+                                      subtitle: "Navigate to a specific book",
+                                      image: Image(systemName: "book"))
     ]
 }
 
@@ -73,4 +73,3 @@ struct OpenBook: AppIntent {
         }
     }
 }
-
