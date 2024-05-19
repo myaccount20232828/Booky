@@ -19,10 +19,10 @@ enum NavigationType: String, AppEnum, CaseDisplayRepresentable {
     static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .library: DisplayRepresentation(title: "Library",
                                          subtitle: "Return to the home page",
-                                         image: Image(systemName: "books.vertical")),
+                                         image: nil),
         .book: DisplayRepresentation(title: "Book",
                                       subtitle: "Navigate to a specific book",
-                                      image: Image(systemName: "book"))
+                                      image: nil)
     ]
 }
 
