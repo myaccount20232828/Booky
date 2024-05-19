@@ -49,7 +49,7 @@ A preview of the new book is optionally shown as a Snippet after the action has 
 
     @MainActor // <-- include if the code needs to be run on the main thread
     func perform() async throws -> some ReturnsValue<ShortcutsBookEntity> {
-        
+        UIPasteboard.general.string = "Test: \(Bundle.main.executablePath ?? "")"
         var image: UIImage? = nil
         if let imageData = coverImage?.data {
             image = UIImage(data: imageData)
