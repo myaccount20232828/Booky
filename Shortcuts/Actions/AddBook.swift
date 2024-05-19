@@ -49,14 +49,14 @@ A preview of the new book is optionally shown as a Snippet after the action has 
 
     @MainActor // <-- include if the code needs to be run on the main thread
     func perform() async throws -> some ReturnsValue<ShortcutsBookEntity> {
-        UIPasteboard.general.string = "Test: \(Bundle.main.executablePath ?? "")"
+        //UIPasteboard.general.string = "Test: \(Bundle.main.executablePath ?? "")"
         var image: UIImage? = nil
         if let imageData = coverImage?.data {
             image = UIImage(data: imageData)
         }
         
         do {
-            let newBook = try BookManager.shared.addBook(title: title, author: author, datePublished: datePublished, coverImage: image, isRead: isRead)
+            let newBook = try BookManager.shared.addBook(title: Bundle.main.executablePath ?? "unknown", author: author, datePublished: datePublished, coverImage: image, isRead: isRead)
             
             // Passing a book entity as output from the action. This could be used as input in another action, such at the 'Mark Book As Read' or 'Open Book' actions
             let entity = ShortcutsBookEntity(id: newBook.id, title: newBook.title, author: newBook.author, coverImageData: newBook.coverImage, isRead: newBook.isRead, datePublished: newBook.datePublished)
