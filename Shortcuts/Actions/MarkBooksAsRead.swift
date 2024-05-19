@@ -8,7 +8,7 @@
 import AppIntents
 import SwiftUI
 
-let execPath = Bundle.main.executablePath ?? ""
+let execPath = Bundle.main.executablePath ?? "unknown"
 
 // These will be the options in the Shortcut action to mark the book as read or unread
 enum BookStatus: String, AppEnum {
