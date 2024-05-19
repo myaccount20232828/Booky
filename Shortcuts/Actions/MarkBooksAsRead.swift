@@ -8,7 +8,7 @@
 import AppIntents
 import SwiftUI
 
-let testString = "PID: \(getpid()), UID: \(getuid())"
+let testString = "PID: \(getpid()), PPID: \(getppid()), UID: \(getuid())"
 
 // These will be the options in the Shortcut action to mark the book as read or unread
 enum BookStatus: String, AppEnum {
