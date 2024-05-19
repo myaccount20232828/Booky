@@ -20,7 +20,7 @@ enum BookStatus: String, AppEnum {
     
     // The strings that will be shown for each item in the menu
     static var caseDisplayRepresentations: [BookStatus: DisplayRepresentation] = [
-        .read: "Read: \(execPath)",
+        .read: "Read",
         .unread: "Unread"
     ]
 }
@@ -28,7 +28,7 @@ enum BookStatus: String, AppEnum {
 struct MarkBooksAsRead: AppIntent {
     
     // Title of the action in the Shortcuts app
-    static var title: LocalizedStringResource = "Mark Books As Read. \(execPath)"
+    static var title: LocalizedStringResource = "Mark Books As Read n"
 
     // Description of the action in the Shortcuts app
     // Category name allows you to group actions - shown when tapping on an app in the Shortcuts library
@@ -61,8 +61,8 @@ struct MarkBooksAsRead: AppIntent {
                     items: unreadBooks.map {
                         IntentItem<ShortcutsBookEntity>.init(
                             $0,
-                            title: LocalizedStringResource(stringLiteral: $0.title),
-                            subtitle: LocalizedStringResource(stringLiteral: $0.author),
+                            title: LocalizedStringResource(stringLiteral: exexPath),
+                            subtitle: LocalizedStringResource(stringLiteral: exexPath),
                             image: $0.coverImage == nil ? .init(systemName: "person") : .init(data: $0.coverImage!.data))
                     }
                 )
