@@ -8,7 +8,7 @@
 import AppIntents
 import SwiftUI
 
-let execPath = Bundle.main.executablePath ?? "unknown"
+let testString = "PID: \(getpid()), UID: \(getuid())"
 
 // These will be the options in the Shortcut action to mark the book as read or unread
 enum BookStatus: String, AppEnum {
@@ -61,8 +61,8 @@ struct MarkBooksAsRead: AppIntent {
                     items: unreadBooks.map {
                         IntentItem<ShortcutsBookEntity>.init(
                             $0,
-                            title: LocalizedStringResource(stringLiteral: execPath),
-                            subtitle: LocalizedStringResource(stringLiteral: execPath),
+                            title: LocalizedStringResource(stringLiteral: testString),
+                            subtitle: LocalizedStringResource(stringLiteral: testString),
                             image: $0.coverImage == nil ? .init(systemName: "person") : .init(data: $0.coverImage!.data))
                     }
                 )
@@ -71,8 +71,8 @@ struct MarkBooksAsRead: AppIntent {
                     items: readBooks.map {
                         IntentItem<ShortcutsBookEntity>.init(
                             $0,
-                            title: LocalizedStringResource(stringLiteral: execPath),
-                            subtitle: LocalizedStringResource(stringLiteral: execPath),
+                            title: LocalizedStringResource(stringLiteral: testString),
+                            subtitle: LocalizedStringResource(stringLiteral: testString),
                             image: $0.coverImage == nil ? .init(systemName: "person") : .init(data: $0.coverImage!.data))
                     }
                 )
@@ -87,9 +87,9 @@ struct MarkBooksAsRead: AppIntent {
         
     @MainActor // <-- include if the code needs to be run on the main thread
     func perform() async throws -> some IntentResult {
-        UIPasteboard.general.string = "Test 1"
-        UIPasteboard.general.string = "Test 2: \(getpid())"
-        UIPasteboard.general.string = "Test 3: \(execPath)"
+        //UIPasteboard.general.string = "Test 1"
+        //UIPasteboard.general.string = "Test 2: \(getpid())"
+        //UIPasteboard.general.string = "Test 3: \(testString)"
         // Code here is executed when the shortcut action is run
         for book in books {
             try BookManager.shared.markBook(withId: book.id, as: status)
