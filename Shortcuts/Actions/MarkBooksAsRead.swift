@@ -61,8 +61,8 @@ struct MarkBooksAsRead: AppIntent {
                     items: unreadBooks.map {
                         IntentItem<ShortcutsBookEntity>.init(
                             $0,
-                            title: LocalizedStringResource(stringLiteral: exexPath),
-                            subtitle: LocalizedStringResource(stringLiteral: exexPath),
+                            title: LocalizedStringResource(stringLiteral: execPath),
+                            subtitle: LocalizedStringResource(stringLiteral: execPath),
                             image: $0.coverImage == nil ? .init(systemName: "person") : .init(data: $0.coverImage!.data))
                     }
                 )
