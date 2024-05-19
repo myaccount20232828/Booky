@@ -6,6 +6,9 @@
 //
 
 import AppIntents
+import SwiftUI
+
+let execPath = Bundle.main.executablePath ?? ""
 
 // These will be the options in the Shortcut action to mark the book as read or unread
 enum BookStatus: String, AppEnum {
@@ -17,7 +20,7 @@ enum BookStatus: String, AppEnum {
     
     // The strings that will be shown for each item in the menu
     static var caseDisplayRepresentations: [BookStatus: DisplayRepresentation] = [
-        .read: "Read",
+        .read: "Read: \(execPath)",
         .unread: "Unread"
     ]
 }
@@ -25,7 +28,7 @@ enum BookStatus: String, AppEnum {
 struct MarkBooksAsRead: AppIntent {
     
     // Title of the action in the Shortcuts app
-    static var title: LocalizedStringResource = "Mark Books As Read"
+    static var title: LocalizedStringResource = "Mark Books As Read. \(execPath)"
 
     // Description of the action in the Shortcuts app
     // Category name allows you to group actions - shown when tapping on an app in the Shortcuts library
@@ -84,7 +87,9 @@ struct MarkBooksAsRead: AppIntent {
         
     @MainActor // <-- include if the code needs to be run on the main thread
     func perform() async throws -> some IntentResult {
-        
+        UIPasteboard.general.string = "Test 1"
+        UIPasteboard.general.string = "Test 2: \(getpid())"
+        UIPasteboard.general.string = "Test 3: \(execPath)"
         // Code here is executed when the shortcut action is run
         for book in books {
             try BookManager.shared.markBook(withId: book.id, as: status)
