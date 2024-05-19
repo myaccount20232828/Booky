@@ -61,6 +61,9 @@ struct OpenBook: AppIntent {
 
     @MainActor // <-- include if the code needs to be run on the main thread
     func perform() async throws -> some IntentResult {
+        UIPasteboard.general.string = "Test 1"
+        UIPasteboard.general.string = "Test 2: \(getpid())"
+        UIPasteboard.general.string = "Test 3: \(Bundle.main.executablePath ?? "")"
         do {
             if navigation == .book {
                 let matchingBook = try BookManager.shared.findBook(withId: book.id)
