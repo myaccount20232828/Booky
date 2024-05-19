@@ -6,6 +6,7 @@
 //
 
 import AppIntents
+import SwiftUI
 
 // These will be the options in the Shortcut action to open a book or navigate to the library
 enum NavigationType: String, AppEnum, CaseDisplayRepresentable {
